@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
+@theme {
+  --color-dark1: #000000;
+  --color-dark2: #101010;
+  --color-light1: #fff;
+  --color-light2: #fafafa;
+  --color-light3: #f1f1f1;
+  --color-lightbutton: #fbaf85;
+  --color-darkbutton: #d87d4a;
+}
