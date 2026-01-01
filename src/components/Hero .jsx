@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import MarkII from "../assets/XX99 MARK II HEADPHONES.svg";
 import Button from "../components/Button";
 
 const Hero = () => {
   return (
     <>
       {/* hero */}
-      <section className="relative flex md:flex-row justify-around items-center md:py-10 bg-dark1 text-light2">
+      <section className="z-1  relative flex md:flex-row justify-around items-center py-20 bg-dark1 text-light2">
         {/* text */}
         <div
           className=" absolute lg:static flex flex-col items-center lg:items-start
@@ -27,7 +26,7 @@ const Hero = () => {
             <Button
               color={"bg-darkbutton"}
               textColor={"text-light2"}
-              hoverColor={"bg-lightbutton"}
+              hoverColor={"hover:bg-lightbutton"}
             >
               SEE PRODUCTS
             </Button>
@@ -36,11 +35,11 @@ const Hero = () => {
         <div className="lg:hidden bg-black/70 absolute inset-0 z-0"></div>
 
         {/* image */}
-        <div>
+        <div className="relative overflow-hidden drop-shadow-[0_0_70px_rgba(255,255,255,0.15)]">
           <img
-            src={MarkII}
+            src={"assets/XX99_MARK_II_HEADPHONES.svg"}
             alt="XX99 MARK II HEADPHONES"
-            className="w-full object-cover"
+            className="object-cover object-top w-full"
           />
         </div>
       </section>

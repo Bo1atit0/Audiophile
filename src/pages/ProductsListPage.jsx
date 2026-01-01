@@ -2,14 +2,15 @@ import Audiogear from "../components/Audiogear";
 import Heading from "../components/Heading";
 import Items from "../components/Items";
 import Products from "../components/Products";
-import ProductsData from "../data/ProductsData";
-
+import { useParams } from "react-router-dom";
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+// import { useEffect, useState } from "react";
 
-const HeadphonesPage = () => {
+const ProductsListPage = () => {
+  const { category } = useParams();
   const allProducts = useQuery(api.products.getProducts);
-  console.log(`All Products:`, allProducts);
+  console.log(allProducts);
 
   if (allProducts === undefined) {
     return (
@@ -18,28 +19,32 @@ const HeadphonesPage = () => {
       </div>
     );
   }
-  const headphoneData = allProducts?.filter(
-    (product) => product.category === "Headphones"
+  const product = allProducts.filter(
+    (product) => product.category.toLowerCase() === category.toLowerCase()
   );
-  console.log(`Headphone Products:`, headphoneData);
 
-  // const headphones = ProductsData.Headphones;
+  if (product.length === 0) {
+    window.location.href = "/";
+  }
+
   return (
     <section>
       {/* heading */}
       <section>
-        <Heading title="HEADPHONES" />
+        <Heading title={category.toUpperCase()} />
       </section>
 
       {/* products */}
       <section className="lg:py-20 md:my-20 mb-20 space-y-10">
-        {headphoneData.map((item) => (
+        {product.map((item) => (
           <Items
             key={item.id}
             name={item.name}
             image={item.image}
             description={item.description}
             reverse={item.id % 2 === 0}
+            category={item.category}
+            slug={item.slug}
           />
         ))}
       </section>
@@ -53,4 +58,4 @@ const HeadphonesPage = () => {
   );
 };
 
-export default HeadphonesPage;
+export default ProductsListPage;

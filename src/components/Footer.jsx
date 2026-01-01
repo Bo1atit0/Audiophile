@@ -3,10 +3,44 @@ import { FaFacebookSquare } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 
+import Button from "./Button";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import ProductsData from "../data/ProductsData";
+
 const Footer = () => {
+  //Delete after populating DB
+  const addProducts = useMutation(api.products.addProducts);
+
+  const handlePopulateDB = async () => {
+    try {
+      await addProducts({ products: ProductsData });
+      alert("Products table populated successfully.");
+    } catch (error) {
+      alert("Error populating products table");
+      console.error("Error:", error);
+    }
+  };
+
+  const navItems = [
+    { href: "/", label: "HOME" },
+    { href: "/headphones", label: "HEADPHONES" },
+    { href: "/speakers", label: "SPEAKERS" },
+    { href: "/earpods", label: "EARPHONES" },
+  ];
+
+  const socialLinks = [
+    { href: "#", icon: <FaFacebookSquare /> },
+    { href: "#", icon: <FaTwitter /> },
+    { href: "#", icon: <FaInstagram /> },
+  ];
   return (
-    <footer className="bg-dark1">
-      <section className="lg:flex hidden mx-auto items-center justify-around py-15 text-light3 px-10">
+    <footer className="bg-dark1 ">
+      <button onClick={handlePopulateDB} className="bg-red-500 py-2 px-8">
+        DB
+      </button>
+
+      <section className="lg:flex justify-around hidden mx-auto  py-15 text-light3 px-10">
         {/* text */}
         <div className="flex flex-col gap-10 w-[40%]">
           <h1 className="text-xl font-extrabold text-white">audiophile</h1>
@@ -20,31 +54,30 @@ const Footer = () => {
         </div>
 
         {/* links */}
-        <div className="flex flex-col gap-30">
-          <div className="flex gap-10 text-xs">
-            <Link className="hover:text-darkbutton transition-colors">
-              HOME
-            </Link>
-            <Link className="hover:text-darkbutton transition-colors">
-              HEADPHONES
-            </Link>
-            <Link className="hover:text-darkbutton transition-colors">
-              SPEAKER
-            </Link>
-            <Link className="hover:text-darkbutton transition-colors">
-              EARPHONES
-            </Link>
+        <div className="flex flex-col items-center justify-between">
+          <div className="flex gap-10 h-8 items-center">
+            {navItems.map((item, index) => (
+              <div key={index} className="flex  text-xs">
+                <Link
+                  to={item.href}
+                  className="hover:text-darkbutton transition-colors text-light3"
+                >
+                  {item.label}
+                </Link>
+              </div>
+            ))}
           </div>
-          <div className="flex mb-3 justify-end gap-6">
-            <Link className="text-xl hover:text-darkbutton transition-colors">
-              <FaFacebookSquare />
-            </Link>
-            <Link className="text-xl hover:text-darkbutton transition-colors">
-              <FaTwitter />
-            </Link>
-            <Link className="text-xl hover:text-darkbutton transition-colors">
-              <FaInstagram />
-            </Link>
+
+          <div className="flex gap-4">
+            {socialLinks.map((items, index) => (
+              <Link
+                key={index}
+                to={items.href}
+                className="text-2xl hover:text-darkbutton transition-colors duration-500"
+              >
+                {items.icon}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -56,24 +89,21 @@ const Footer = () => {
         </div>
 
         {/* links */}
-
-        <div className="flex flex-col  md:flex-row gap-10 text-lg mb-10">
-          <Link className="hover:text-darkbutton transition-colors duration-500">
-            HOME
-          </Link>
-          <Link className="hover:text-darkbutton transition-colors duration-500">
-            HEADPHONES
-          </Link>
-          <Link className="hover:text-darkbutton transition-colors duration-500">
-            SPEAKER
-          </Link>
-          <Link className="hover:text-darkbutton transition-colors duration-500">
-            EARPHONES
-          </Link>
+        <div className="flex flex-col md:flex-row md:gap-5 gap-8 mb-10 md:mb-5">
+          {navItems.map((item, index) => (
+            <div key={index} className="">
+              <Link
+                to={item.href}
+                className="hover:text-darkbutton transition-colors duration-500"
+              >
+                {item.label}
+              </Link>
+            </div>
+          ))}
         </div>
 
         {/* text */}
-        <div className="mb-15">
+        <div className="mb-15 text-center md:text-start">
           <p className=" ">
             Audiophile is an all in one stop to fulfill your audio needs. We're
             a small team of music lovers and sound specialists who are devoted
@@ -91,15 +121,15 @@ const Footer = () => {
           {/* Links */}
 
           <div className="flex gap-4">
-            <Link className="text-2xl hover:text-darkbutton transition-colors duration-500">
-              <FaFacebookSquare />
-            </Link>
-            <Link className="text-2xl hover:text-darkbutton transition-colors duration-500">
-              <FaTwitter />
-            </Link>
-            <Link className="text-2xl hover:text-darkbutton transition-colors duration-500">
-              <FaInstagram />
-            </Link>
+            {socialLinks.map((items, index) => (
+              <Link
+                key={index}
+                to={items.href}
+                className="text-2xl hover:text-darkbutton transition-colors duration-500"
+              >
+                {items.icon}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

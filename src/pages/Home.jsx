@@ -1,14 +1,8 @@
 import Button from "../components/Button";
 import Hero from "../components/Hero ";
 import Products from "../components/Products";
-import Zx9 from "../assets/ZX9 SPEAKER.svg";
-import Zx7 from "../assets/ZX7_SPEAKER.svg";
-import YX1 from "../assets/YX1_Earphones.svg";
+
 import Audiogear from "../components/Audiogear";
-import Swirl1 from "../assets/swirl1.svg";
-import Swirl2 from "../assets/swirl2.svg";
-import Swirl3 from "../assets/swirl3.svg";
-import MobileZx7 from "../assets/mobileZX7_Speaker.svg";
 
 const Home = () => {
   return (
@@ -34,17 +28,17 @@ const Home = () => {
             {/* swirl bg images */}
             {/* <div> */}
             <img
-              src={Swirl2}
+              src={"assets/swirl2.svg"}
               alt=""
               className="lg:hidden absolute md:w-[60%] w-full h-full md:bottom-6 bottom-18 opacity-50"
             />
             <img
-              src={Swirl3}
+              src={"assets/swirl3.svg"}
               alt=""
               className="lg:hidden absolute md:w-[70%] w-[80%] h-full md:bottom-8 bottom-20 opacity-50"
             />
             <img
-              src={Swirl1}
+              src={"assets/swirl1.svg"}
               alt=""
               className="lg:hidden absolute bottom-0 w-full object-cover h-full opacity-50"
             />
@@ -53,7 +47,7 @@ const Home = () => {
             {/* image */}
             <div className="flex items-center justify-center">
               <img
-                src={Zx9}
+                src={"assets/ZX9_SPEAKER.svg"}
                 alt="ZX9 SPEAKER"
                 className="-mb-4 lg:w-full w-[65%]"
               />
@@ -87,12 +81,12 @@ const Home = () => {
               </Button>
             </div>
             <img
-              src={Zx7}
+              src={"assets/ZX7_Speaker.svg"}
               alt="ZX7 SPEAKER"
               className="lg:block md:block hidden rounded-xl h-80 w-full"
             />
             <img
-              src={MobileZx7}
+              src={"assets/mobileZX7_Speaker.svg"}
               alt="Mobile Zx7"
               className="lg:hidden md:hidden h-80 rounded-xl w-screen object-cover"
             />
@@ -101,7 +95,7 @@ const Home = () => {
           {/* earphones */}
           <div className="flex md:flex-row flex-col items-center justify-center w-full gap-4 h-400px">
             <img
-              src={YX1}
+              src={"assets/YX1_Earphones.svg"}
               alt="YX1 EARPHONES"
               className="md:w-[50%] w-full md:h-80 h-60 rounded-xl"
             />
